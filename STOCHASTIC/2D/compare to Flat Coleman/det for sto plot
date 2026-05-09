@@ -1,0 +1,22 @@
+Best-fit parameters:
+alpha_val = 0.10684822
+beta_val  = 0.87017551
+delta_val = 0.07115084
+gamma_val = 0.73151022
+xi_val    = 0.01689965
+
+n |   E_n (rescaled)   |   Lambda_n / H
+---------------------------------------------
+0 | -8.150127e-03 | -2.064451e-04
+1 |  5.206598e-01 |  1.318847e-02
+2 |  5.635514e-01 |  1.427492e-02
+
+COMPARE TO 2D FLAT COLEMAN WITH Dimensionless parameters:
+  kappa1 = 0.7
+  rho    = 0.5
+  kappa2 = 0.95
+  gamma  = 0.2
+
+
+
+
