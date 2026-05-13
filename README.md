@@ -20,14 +20,375 @@ The central goal is to benchmark these two approaches against each other, studyi
 ```
 semi-classical-and-stochastic-comparison-thesis/
 │
-├── COLEMAN/                  # Scripts and data for the semi-classical (instanton) calculations
-├── STOCHASTIC/               # Scripts and data for the stochastic / Monte Carlo simulations
-└── Numerical Codes.ipynb     # Main Jupyter notebook containing all numerical implementations,
-                              #   plots, and comparative analysis
+├── COLEMAN/                  # Scripts and data for the semi-classical (Coleman instanton) calculations
+├── STOCHASTIC/               # Scripts and data for the stochastic simulations and results
+    
 ```
 
-### `COLEMAN/`
-Contains the semi-classical calculation pipeline. This includes instanton solutions to the Euclidean equations of motion, computation of one-loop fluctuation determinants, and evaluation of tunneling rates via the dilute instanton gas approximation.
+git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+This repository contains a suite of Python tools for calculating **vacuum decay** and **instanton solutions** using both custom shooting methods and the `CosmoTransitions` package. It focuses on the **dimensionless Coleman potential**, providing solutions for both single-field and two-field (coupled) systems.
+
+---
+
+## 🌌 Project Overview: Coleman Potential Solver
+
+In quantum field theory and cosmology, vacuum decay is described by the "bounce" solution. This project calculates the field profile $\hat{\phi}(\hat{r})$ and the Euclidean action $S_4$ for potentials of the form:
+
+$$v(\hat{\phi}) = (\hat{\phi}^2 - 1)^2 + \kappa(\hat{\phi} - 1)$$
+
+The code handles the transformation from dimensionful parameters $(\lambda, a, \epsilon)$ to the dimensionless $\kappa$ and solves the resulting Euler-Lagrange equations.
+
+---
+
+## 🛠 Features & Scripts
+
+The repository is organized into three primary solvers:
+
+### 1. `A1_Overshoot_Undershoot.py` (Custom Shooting)
+*   **Method:** Implements a manual "Overshoot/Undershoot" shooting algorithm.
+*   **Highlights:** 
+    *   Finds stationary points and barrier tops.
+    *   Solves the ODE $\hat{\phi}'' + \frac{3}{\hat{r}}\hat{\phi}' = \frac{dv}{d\hat{\phi}}$ using `scipy.integrate.solve_ivp`.
+    *   Calculates the dimensionless action $S_4$ via integration.
+
+### 2. `A2_SingleField_Instanton.py` (1D CosmoTransitions)
+*   **Method:** Utilizes the `SingleFieldInstanton` class from the `CosmoTransitions` library.
+*   **Highlights:** 
+    *   Uses a robust analytic cubic solver to find vacua.
+    *   High-precision bounce profile generation.
+    *   Comparison of potential depth ($v_{TV}$ vs $v_{FV}$).
+
+### 3. `B1_2D_PathDeformation.py` (2D CosmoTransitions)
+*   **Method:** Implements a 2D coupled potential using `pathDeformation`.
+*   **Potential Model:** 
+    $$v(\hat{\phi}_1, \hat{\phi}_2) = v(\hat{\phi}_1) + \rho v(\hat{\phi}_2) + \gamma \hat{\phi}_1^2 \hat{\phi}_2^2$$
+*   **Highlights:** 
+    *   Automated scan of the 2D surface to find all local minima.
+    *   Calculates the **Tunneling Path** between the closest metastable vacuum and the true vacuum.
+    *   Plots 2D contour maps of the field trajectory.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.8+
+*   NumPy, SciPy, Matplotlib
+*   [CosmoTransitions](https://github.com/cloveras/CosmoTransitions)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+    *Note: Ensure `cosmoTransitions` is in your Python path.*
+
+---
+
+## 📊 Visualizations
+
+The scripts generate two types of plotsThis repository contains a suite of Python tools for calculating **vacuum decay** and **instanton solutions** using both custom shooting methods and the `CosmoTransitions` package. It focuses on the **dimensionless Coleman potential**, providing solutions for both single-field and two-field (coupled) systems.
+
+---
+
+## 🌌 Project Overview: Coleman Potential Solver
+
+In quantum field theory and cosmology, vacuum decay is described by the "bounce" solution. This project calculates the field profile $\hat{\phi}(\hat{r})$ and the Euclidean action $S_4$ for potentials of the form:
+
+$$v(\hat{\phi}) = (\hat{\phi}^2 - 1)^2 + \kappa(\hat{\phi} - 1)$$
+
+The code handles the transformation from dimensionful parameters $(\lambda, a, \epsilon)$ to the dimensionless $\kappa$ and solves the resulting Euler-Lagrange equations.
+
+---
+
+## 🛠 Features & Scripts
+
+The repository is organized into three primary solvers:
+
+### 1. `A1_Overshoot_Undershoot.py` (Custom Shooting)
+*   **Method:** Implements a manual "Overshoot/Undershoot" shooting algorithm.
+*   **Highlights:** 
+    *   Finds stationary points and barrier tops.
+    *   Solves the ODE $\hat{\phi}'' + \frac{3}{\hat{r}}\hat{\phi}' = \frac{dv}{d\hat{\phi}}$ using `scipy.integrate.solve_ivp`.
+    *   Calculates the dimensionless action $S_4$ via integration.
+
+### 2. `A2_SingleField_Instanton.py` (1D CosmoTransitions)
+*   **Method:** Utilizes the `SingleFieldInstanton` class from the `CosmoTransitions` library.
+*   **Highlights:** 
+    *   Uses a robust analytic cubic solver to find vacua.
+    *   High-precision bounce profile generation.
+    *   Comparison of potential depth ($v_{TV}$ vs $v_{FV}$).
+
+### 3. `B1_2D_PathDeformation.py` (2D CosmoTransitions)
+*   **Method:** Implements a 2D coupled potential using `pathDeformation`.
+*   **Potential Model:** 
+    $$v(\hat{\phi}_1, \hat{\phi}_2) = v(\hat{\phi}_1) + \rho v(\hat{\phi}_2) + \gamma \hat{\phi}_1^2 \hat{\phi}_2^2$$
+*   **Highlights:** 
+    *   Automated scan of the 2D surface to find all local minima.
+    *   Calculates the **Tunneling Path** between the closest metastable vacuum and the true vacuum.
+    *   Plots 2D contour maps of the field trajectory.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.8+
+*   NumPy, SciPy, Matplotlib
+*   [CosmoTransitions](https://github.com/cloveras/CosmoTransitions)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+    *Note: Ensure `cosmoTransitions` is in your Python path.*
+
+---
+
+## 📊 Visualizations
+
+The scripts generate two types of plots:
+1.  **Field Profiles:** The evolution of $\hat{\phi}$ as a function of the dimensionless radius $\hat{r}$.
+2.  **Potential LandscapesThis repository contains a suite of Python tools for calculating **vacuum decay** and **instanton solutions** using both custom shooting methods and the `CosmoTransitions` package. It focuses on the **dimensionless Coleman potential**, providing solutions for both single-field and two-field (coupled) systems.
+
+---
+
+## 🌌 Project Overview: Coleman Potential Solver
+
+In quantum field theory and cosmology, vacuum decay is described by the "bounce" solution. This project calculates the field profile $\hat{\phi}(\hat{r})$ and the Euclidean action $S_4$ for potentials of the form:
+
+$$v(\hat{\phi}) = (\hat{\phi}^2 - 1)^2 + \kappa(\hat{\phi} - 1)$$
+
+The code handles the transformation from dimensionful parameters $(\lambda, a, \epsilon)$ to the dimensionless $\kappa$ and solves the resulting Euler-Lagrange equations.
+
+---
+
+## 🛠 Features & Scripts
+
+The repository is organized into three primary solvers:
+
+### 1. `A1_Overshoot_Undershoot.py` (Custom Shooting)
+*   **Method:** Implements a manual "Overshoot/Undershoot" shooting algorithm.
+*   **Highlights:** 
+    *   Finds stationary points and barrier tops.
+    *   Solves the ODE $\hat{\phi}'' + \frac{3}{\hat{r}}\hat{\phi}' = \frac{dv}{d\hat{\phi}}$ using `scipy.integrate.solve_ivp`.
+    *   Calculates the dimensionless action $S_4$ via integration.
+
+### 2. `A2_SingleField_Instanton.py` (1D CosmoTransitions)
+*   **Method:** Utilizes the `SingleFieldInstanton` class from the `CosmoTransitions` library.
+*   **Highlights:** 
+    *   Uses a robust analytic cubic solver to find vacua.
+    *   High-precision bounce profile generation.
+    *   Comparison of potential depth ($v_{TV}$ vs $v_{FV}$).
+
+### 3. `B1_2D_PathDeformation.py` (2D CosmoTransitions)
+*   **Method:** Implements a 2D coupled potential using `pathDeformation`.
+*   **Potential Model:** 
+    $$v(\hat{\phi}_1, \hat{\phi}_2) = v(\hat{\phi}_1) + \rho v(\hat{\phi}_2) + \gamma \hat{\phi}_1^2 \hat{\phi}_2^2$$
+*   **Highlights:** 
+    *   Automated scan of the 2D surface to find all local minima.
+    *   Calculates the **Tunneling Path** between the closest metastable vacuum and the true vacuum.
+    *   Plots 2D contour maps of the field trajectory.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.8+
+*   NumPy, SciPy, Matplotlib
+*   [CosmoTransitions](https://github.com/cloveras/CosmoTransitions)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+    *Note: Ensure `cosmoTransitions` is in your Python path.*
+
+---
+
+## 📊 Visualizations
+
+The scripts generate two types of plots:
+1.  **Field Profiles:** The evolution of $\hat{\phi}$ as a function of the dimensionless radius $\hat{r}$.
+2.  **Potential Landscapes:** 
+    *   **1D:** Energy levels of the True Vacuum (TV), False Vacuum (FV), and Barrier Top.
+    *   **2This repository contains a suite of Python tools for calculating **vacuum decay** and **instanton solutions** using both custom shooting methods and the `CosmoTransitions` package. It focuses on the **dimensionless Coleman potential**, providing solutions for both single-field and two-field (coupled) systems.
+
+---
+
+## 🌌 Project Overview: Coleman Potential Solver
+
+In quantum field theory and cosmology, vacuum decay is described by the "bounce" solution. This project calculates the field profile $\hat{\phi}(\hat{r})$ and the Euclidean action $S_4$ for potentials of the form:
+
+$$v(\hat{\phi}) = (\hat{\phi}^2 - 1)^2 + \kappa(\hat{\phi} - 1)$$
+
+The code handles the transformation from dimensionful parameters $(\lambda, a, \epsilon)$ to the dimensionless $\kappa$ and solves the resulting Euler-Lagrange equations.
+
+---
+
+## 🛠 Features & Scripts
+
+The repository is organized into three primary solvers:
+
+### 1. `A1_Overshoot_Undershoot.py` (Custom Shooting)
+*   **Method:** Implements a manual "Overshoot/Undershoot" shooting algorithm.
+*   **Highlights:** 
+    *   Finds stationary points and barrier tops.
+    *   Solves the ODE $\hat{\phi}'' + \frac{3}{\hat{r}}\hat{\phi}' = \frac{dv}{d\hat{\phi}}$ using `scipy.integrate.solve_ivp`.
+    *   Calculates the dimensionless action $S_4$ via integration.
+
+### 2. `A2_SingleField_Instanton.py` (1D CosmoTransitions)
+*   **Method:** Utilizes the `SingleFieldInstanton` class from the `CosmoTransitions` library.
+*   **Highlights:** 
+    *   Uses a robust analytic cubic solver to find vacua.
+    *   High-precision bounce profile generation.
+    *   Comparison of potential depth ($v_{TV}$ vs $v_{FV}$).
+
+### 3. `B1_2D_PathDeformation.py` (2D CosmoTransitions)
+*   **Method:** Implements a 2D coupled potential using `pathDeformation`.
+*   **Potential Model:** 
+    $$v(\hat{\phi}_1, \hat{\phi}_2) = v(\hat{\phi}_1) + \rho v(\hat{\phi}_2) + \gamma \hat{\phi}_1^2 \hat{\phi}_2^2$$
+*   **Highlights:** 
+    *   Automated scan of the 2D surface to find all local minima.
+    *   Calculates the **Tunneling Path** between the closest metastable vacuum and the true vacuum.
+    *   Plots 2D contour maps of the field trajectory.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.8+
+*   NumPy, SciPy, Matplotlib
+*   [CosmoTransitions](https://github.com/cloveras/CosmoTransitions)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+    *Note: Ensure `cosmoTransitions` is in your Python path.*
+
+---
+
+## 📊 Visualizations
+
+The scripts generate two types of plots:
+1.  **Field Profiles:** The evolution of $\hat{\phi}$ as a function of the dimensionless radius $\hat{r}$.
+2.  **Potential Landscapes:** 
+    *   **1D:** Energy levels of the True Vacuum (TV), False Vacuum (FV), and Barrier Top.
+    *   **2D:** Contour plots showing the path the fields take during the transition.
+
+---
+
+## 📝 Usage Example
+To run the 2D path deformation solver:This repository contains a suite of Python tools for calculating **vacuum decay** and **instanton solutions** using both custom shooting methods and the `CosmoTransitions` package. It focuses on the **dimensionless Coleman potential**, providing solutions for both single-field and two-field (coupled) systems.
+
+---
+
+## 🌌 Project Overview: Coleman Potential Solver
+
+In quantum field theory and cosmology, vacuum decay is described by the "bounce" solution. This project calculates the field profile $\hat{\phi}(\hat{r})$ and the Euclidean action $S_4$ for potentials of the form:
+
+$$v(\hat{\phi}) = (\hat{\phi}^2 - 1)^2 + \kappa(\hat{\phi} - 1)$$
+
+The code handles the transformation from dimensionful parameters $(\lambda, a, \epsilon)$ to the dimensionless $\kappa$ and solves the resulting Euler-Lagrange equations.
+
+---
+
+## 🛠 Features & Scripts
+
+The repository is organized into three primary solvers:
+
+### 1. `A1_Overshoot_Undershoot.py` (Custom Shooting)
+*   **Method:** Implements a manual "Overshoot/Undershoot" shooting algorithm.
+*   **Highlights:** 
+    *   Finds stationary points and barrier tops.
+    *   Solves the ODE $\hat{\phi}'' + \frac{3}{\hat{r}}\hat{\phi}' = \frac{dv}{d\hat{\phi}}$ using `scipy.integrate.solve_ivp`.
+    *   Calculates the dimensionless action $S_4$ via integration.
+
+### 2. `A2_SingleField_Instanton.py` (1D CosmoTransitions)
+*   **Method:** Utilizes the `SingleFieldInstanton` class from the `CosmoTransitions` library.
+*   **Highlights:** 
+    *   Uses a robust analytic cubic solver to find vacua.
+    *   High-precision bounce profile generation.
+    *   Comparison of potential depth ($v_{TV}$ vs $v_{FV}$).
+
+### 3. `B1_2D_PathDeformation.py` (2D CosmoTransitions)
+*   **Method:** Implements a 2D coupled potential using `pathDeformation`.
+*   **Potential Model:** 
+    $$v(\hat{\phi}_1, \hat{\phi}_2) = v(\hat{\phi}_1) + \rho v(\hat{\phi}_2) + \gamma \hat{\phi}_1^2 \hat{\phi}_2^2$$
+*   **Highlights:** 
+    *   Automated scan of the 2D surface to find all local minima.
+    *   Calculates the **Tunneling Path** between the closest metastable vacuum and the true vacuum.
+    *   Plots 2D contour maps of the field trajectory.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.8+
+*   NumPy, SciPy, Matplotlib
+*   [CosmoTransitions](https://github.com/cloveras/CosmoTransitions)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/coleman-instanton-solvers.git
+    cd coleman-instanton-solvers
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install numpy scipy matplotlib
+    ```
+    *Note: Ensure `cosmoTransitions` is in your Python path.*
+
+---
+
+## 📊 Visualizations
+
+The scripts generate two types of plots:
+1.  **Field Profiles:** The evolution of $\hat{\phi}$ as a function of the dimensionless radius $\hat{r}$.
+2.  **Potential Landscapes:** 
+    *   **1D:** Energy levels of the True Vacuum (TV), False Vacuum (FV), and Barrier Top.
+    *   **2D:** Contour plots showing the path the fields take during the transition.
+
+---
+
+## 📝 Usage Example
+To run the 2D path deformation solver:
+```bash
+python B1_2D_PathDeformation.py
 
 ### `STOCHASTIC/`
 Contains the stochastic simulation pipeline. This typically includes Markov Chain Monte Carlo (MCMC) or Langevin dynamics simulations of the discretised path integral, convergence diagnostics, and autocorrelation analysis.
