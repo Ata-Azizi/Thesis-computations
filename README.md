@@ -1,12 +1,12 @@
 # Semi-Classical and Stochastic Methods: A Numerical Comparison
 
-> **Thesis repository** — Numerical implementation and comparison of semi-classical (Coleman instanton) and stochastic approaches to quantum/statistical mechanics problems.
+> **Thesis repository** — Numerical implementation and comparison of semi-classical (Coleman instanton) and stochastic approaches to vacuum decay.
 
 ---
 
 ## Overview
 
-This repository contains the numerical code and supporting material for a thesis that compares two distinct theoretical frameworks for studying quantum tunneling and related phenomena:
+This repository contains the numerical code and supporting material for a thesis that compares two distinct theoretical frameworks for studying quantum tunneling and vacuum decay:
 
 - **Semi-Classical (Coleman) Approach** — based on instanton calculus and saddle-point approximations as developed by Sidney Coleman, used to compute tunneling amplitudes and vacuum decay rates analytically and semi-analytically.
 - **Stochastic Approach** — Monte Carlo or Langevin-type numerical simulations that capture the same physical phenomena through statistical sampling of path integrals or stochastic differential equations.
