@@ -19,21 +19,19 @@ Focuses on the instanton method and the calculation of the tunneling action $B$.
 
 | Category | Features |
 | :--- | :--- |
-| **1D Solvers** | Custom Overshoot/Undershoot shooting algorithms and 1D `CosmoTransitions` implementations. 
-
-| **2D Solvers** | 2D Path Deformation to find the most likely tunneling trajectory in coupled field spaces.
-
-| **Action Analysis** | Automated scans of action $B$ vs. potential parameters ($\gamma, \kappa_1, \kappa_2$).
+| **1D Solvers** | Custom Overshoot/Undershoot shooting algorithms and 1D `CosmoTransitions` implementations. |
+| **2D Solvers** | 2D Path Deformation to find the most likely tunneling trajectory in coupled field spaces. |
+| **Action Analysis** | Automated scans of action $B$ vs. potential parameters ($\gamma, \kappa_1, \kappa_2$). |
 
 ### Part 2: Stochastic Framework
 Implements the Langevin/Fokker-Planck approach by solving the associated Schrödinger-like equation.
 
 | Category | Features |
 | :--- | :--- |
-| **1D Dynamics** | Spectrum analysis of eigenvalues ($\Lambda_n/H$), eigenfunction visualization ($\psi_n$), and parameter sensitivity scans.
-| **2D Dynamics** | Coupled field stochastic evolution, 2D potential landscape mapping, and transition path visualization. 
-| **Optimization** | Differential Evolution algorithms to fit potential parameters to target vacuum and barrier values. 
-| **Comparison** | Direct cross-validation between Stochastic decay rates and Hawking-Moss solutions. 
+| **1D Dynamics** | Spectrum analysis of eigenvalues ($\Lambda_n/H$), eigenfunction visualization ($\psi_n$), and parameter sensitivity scans. |
+| **2D Dynamics** | Coupled field stochastic evolution, 2D potential landscape mapping, and transition path visualization. |
+| **Optimization** | Differential Evolution algorithms to fit potential parameters to target vacuum and barrier values. |
+| **Comparison** | Direct cross-validation between Stochastic decay rates and Hawking-Moss solutions. |
 
 ---
 
