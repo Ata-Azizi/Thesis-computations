@@ -9,7 +9,7 @@
 This repository contains the numerical code and supporting material for a thesis that compares two distinct theoretical frameworks for studying quantum tunneling and vacuum decay:
 
 - **Semi-Classical (Coleman) Approach** — based on instanton calculus and saddle-point approximations as developed by Sidney Coleman, used to compute tunneling amplitudes and vacuum decay rates analytically and semi-analytically.
-- **Stochastic Approach** — Monte Carlo or Langevin-type numerical simulations that capture the same physical phenomena through statistical sampling of path integrals or stochastic differential equations.
+- **Stochastic Approach** — Numerical solution of a Schrödinger-like eigenvalue equation to extract the first non-zero eigenvalue and its corresponding eigenfunction, providing a direct spectral characterization of the system that can be compared against the semi-classical predictions.
 
 The central goal is to benchmark these two approaches against each other, studying where they agree and where they diverge, and to understand the regimes in which each is most effective.
 
